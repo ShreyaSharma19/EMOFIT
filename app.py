@@ -1,49 +1,17 @@
-# from flask import Flask, render_template, request
-# from flask_mysqldb import MySQL
-
-# app=Flask(__name__)
-
-# app.config['MYSQL_HOST']="localhost"
-# app.config['MYSQL_USER']="root"
-# app.config['MYSQL_PASSWORD']="Kopal2005@"
-# app.config['MYSQL_DB']="questionnaire_database"
-
-# mysql=MySQL(app)
-
-# @app.route('/', methods=['GET','POST'])
-# def index():
-
-#     if request.method =="POST":
-#         age = request.form['age']
-#         gender = request.form['gender']
-#         fitness = request.form['fitness']
-#         mood = request.form['mood']
-#         motivation = request.form['motivation']
-#         connectedness = request.form['connectedness']
-#         energy = request.form['energy']
-#         sleep = request.form['sleep']
-#         interest = request.form['interest']
-#         time = request.form['time']
-    
-#         cur=mysql.connection.cursor()
-
-#         cur.execute("INSERT INTO Table1 (age, gender, fitness_level, mood, motivation, connectedness, energy, sleep_quality, interest, time) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", (age, gender, fitness, mood, motivation, connectedness, energy, sleep, interest, time))
-
-#         mysql.connection.commit()
-
-#         cur.close()
-
-#         return "success"
-
-#     return render_template('questionarrie.html')
-
-# if __name__=="__main__":
-#     app.run(debug=True)
 from flask import Flask, render_template, request
 from flask_mysqldb import MySQL
 from model import predict_suggestions, fetch_user_data  # Import your functions
 
 app = Flask(__name__)
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+app.config['MYSQL_HOST'] = os.getenv("MYSQL_HOST")
+app.config['MYSQL_USER'] = os.getenv("MYSQL_USER")
+app.config['MYSQL_PASSWORD'] = os.getenv("MYSQL_PASSWORD")
+app.config['MYSQL_DB'] = os.getenv("MYSQL_DB")
 
 app.config['MYSQL_HOST'] = "localhost"
 app.config['MYSQL_USER'] = "root"
