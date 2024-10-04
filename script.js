@@ -83,3 +83,12 @@ function toggleOverlay(element) {
     var card = element.closest('.card');
     card.classList.toggle('active');
 }
+fetch("https://1599-2401-4900-8847-999e-d41f-dd8-7717-45d6.ngrok-free.app", {
+    method: "GET",
+    headers: {
+        "ngrok-skip-browser-warning": "true"
+    }
+})
+.then(response => response.text())
+.then(data => console.log(data))
+.catch(error => console.error(error));
