@@ -1,0 +1,7 @@
+Flask==2.1.2
+Flask-MySQLdb==1.0.1
+python-dotenv==0.20.0
+mysqlclient==2.1.1
+scikit-learn==1.0.2  # If you're using ML
+numpy==1.21.5       # If you're using ML
+pandas==1.4.1       # If you're using ML
